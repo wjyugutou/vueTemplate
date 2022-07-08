@@ -4,6 +4,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite --port 3333 --open",
+    "fix": "eslint --fix .",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",
     "preview": "vite preview",
