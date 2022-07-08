@@ -1,13 +1,15 @@
 <script setup lang="ts">
-const props = defineProps<{ name: string }>()
-const router = useRouter()
+const router = useRouter();
+const route = useRoute();
+
+const { params } = route;
 </script>
 
 <template>
   <div>
     <div i-carbon-pedestrian text-4xl inline-block />
     <p>
-      Hi, {{ props.name }}
+      Hi, {{ params.name }}
     </p>
     <p text-sm op50>
       <em>Dynamic route!</em>
