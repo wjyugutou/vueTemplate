@@ -42,15 +42,6 @@
 
 See [Vitesse](https://github.com/antfu/vitesse) for full featureset.
 
-
-## Dropped Features from [Vitesse](https://github.com/antfu/vitesse)
-
-- ~~i18n~~
-- ~~Layouts~~
-- ~~SSG~~
-- ~~PWA~~
-- ~~Markdown~~
-
 ## Pre-packed
 
 ### UI Frameworks
@@ -75,10 +66,6 @@ See [Vitesse](https://github.com/antfu/vitesse) for full featureset.
 ### GitHub Template
 
 [Create a repo from this template on GitHub](https://github.com/antfu/vitesse-lite/generate).
-
-### Clone to local
-
-If you prefer to do it manually with the cleaner git history
 
 ```bash
 npx degit antfu/vitesse-lite my-vitesse-app
