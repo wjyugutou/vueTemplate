@@ -18,6 +18,8 @@ export default defineConfig({
     // https://github.com/antfu/unocss
     // see unocss.config.ts for config
     UnoCSS(),
+    // https://uvr.esm.is/
+    // https://github.com/posva/unplugin-vue-router
     VueRouter({
       dts: './types/vue-router.d.ts',
     }),
