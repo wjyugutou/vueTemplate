@@ -1,16 +1,16 @@
 <script setup lang="ts">
-const name = $ref('');
+const name = ref('')
 
-const router = useRouter();
-const go = () => {
-  if (name)
-    router.push(`/hi/${encodeURIComponent(name)}`);
-};
+const router = useRouter()
+function go() {
+  if (name.value)
+    router.push(`/hi/${encodeURIComponent(name.value)}`)
+}
 </script>
 
 <template>
   <div>
-    <div i-carbon-campsite text-4xl inline-block />
+    <div i-carbon-campsite inline-block text-4xl />
     <p>
       <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
         Vitesse Lite
@@ -39,7 +39,7 @@ const go = () => {
 
     <div>
       <button
-        class="m-3 text-sm btn"
+        class="btn m-3 text-sm"
         :disabled="!name"
         @click="go"
       >
