@@ -4,6 +4,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite --port 3333",
+    "update:dep": "pnpm dlx taze latest -w",
     "fix": "eslint --fix .",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",
@@ -11,24 +12,24 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
-    "@vueuse/core": "^10.9.0",
-    "vue": "^3.4.27",
-    "vue-router": "^4.3.2"
+    "@vueuse/core": "^11.2.0",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.18.0",
-    "@iconify-json/carbon": "^1.1.33",
-    "@types/node": "^20.12.12",
-    "@unocss/eslint-plugin": "^0.60.2",
-    "@unocss/reset": "^0.60.2",
-    "@vitejs/plugin-vue": "^5.0.4",
-    "eslint": "^9.2.0",
-    "typescript": "^5.4.5",
-    "unocss": "^0.60.2",
-    "unplugin-auto-import": "^0.17.6",
-    "unplugin-vue-components": "^0.27.0",
-    "unplugin-vue-router": "^0.8.6",
-    "vite": "^5.2.11",
-    "vue-tsc": "^2.0.19"
+    "@antfu/eslint-config": "^3.8.0",
+    "@iconify-json/carbon": "^1.2.4",
+    "@types/node": "^22.9.0",
+    "@unocss/eslint-plugin": "^0.64.0",
+    "@unocss/reset": "^0.64.0",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "eslint": "^9.14.0",
+    "typescript": "^5.6.3",
+    "unocss": "^0.64.0",
+    "unplugin-auto-import": "^0.18.3",
+    "unplugin-vue-components": "^0.27.4",
+    "unplugin-vue-router": "^0.10.8",
+    "vite": "^5.4.10",
+    "vue-tsc": "^2.1.10"
   }
 }
