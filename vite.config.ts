@@ -1,11 +1,11 @@
 import path from 'node:path'
-import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
+import UnoCSS from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
-import Components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import UnoCSS from 'unocss/vite'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   resolve: {
@@ -21,13 +21,13 @@ export default defineConfig({
     // https://uvr.esm.is/
     // https://github.com/posva/unplugin-vue-router
     VueRouter({
+      exclude: ['src/pages/auth/**'],
       dts: './types/vue-router.d.ts',
     }),
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: [
         'vue',
-        'vue-router',
         '@vueuse/core',
         VueRouterAutoImports,
       ],
@@ -35,7 +35,6 @@ export default defineConfig({
       dirs: [
         './src/composables',
       ],
-      vueTemplate: true,
     }),
 
     // https://github.com/antfu/vite-plugin-components

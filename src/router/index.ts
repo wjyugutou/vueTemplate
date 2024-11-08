@@ -1,24 +1,14 @@
-import type { RouteRecordRaw } from 'vue-router';
-import { createRouter, createWebHistory } from 'vue-router';
-
-const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    name: 'home',
-    component: () => import('@/pages/index.vue'),
-  }, {
-    path: '/hi/:name',
-    name: 'hi',
-    component: () => import('@/pages/hi/index.vue'),
-  }, {
-    path: '/:pathMatch(.*)*',
-    name: 'notFound',
-    component: () => import('@/pages/notFound.vue'),
-  },
-];
+import { createRouter, createWebHistory } from 'vue-router'
+import { handleHotUpdate, routes } from 'vue-router/auto-routes'
 
 const router = createRouter({
   routes,
   history: createWebHistory(),
-});
-export default router;
+})
+
+// This will update routes at runtime without reloading the page
+if (import.meta.hot) {
+  handleHotUpdate(router)
+}
+
+export default router

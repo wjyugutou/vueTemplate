@@ -7,7 +7,8 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "@/*": ["src/*"]
     },
     "resolveJsonModule": true,
     "types": [
@@ -22,9 +23,11 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "eslint.config.*js"
+  "include": [
+    "src",
+    "vite.config.ts",
+    "types",
+    "unocss.config.ts",
+    "shims.d.ts"
   ]
 }

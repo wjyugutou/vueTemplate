@@ -5,7 +5,7 @@ const router = useRouter()
 
 function go() {
   if (name.value)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
+    router.push(`/hii/${encodeURIComponent(name.value)}`)
 }
 </script>
 
