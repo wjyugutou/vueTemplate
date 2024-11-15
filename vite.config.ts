@@ -19,7 +19,6 @@ export default defineConfig({
     // see unocss.config.ts for config
     UnoCSS(),
     // https://uvr.esm.is/
-    // https://github.com/posva/unplugin-vue-router
     VueRouter({
       exclude: ['src/pages/auth/**'],
       dts: './types/vue-router.d.ts',
