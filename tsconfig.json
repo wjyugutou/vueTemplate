@@ -3,8 +3,8 @@
     "target": "es2016",
     "jsx": "preserve",
     "lib": ["DOM", "ESNext"],
-    "baseUrl": ".",
     "module": "ESNext",
+    "baseUrl": ".",
     "moduleResolution": "bundler",
     "paths": {
       "~/*": ["src/*"],
@@ -27,7 +27,6 @@
     "src",
     "vite.config.ts",
     "types",
-    "unocss.config.ts",
-    "shims.d.ts"
+    "unocss.config.ts"
   ]
 }
