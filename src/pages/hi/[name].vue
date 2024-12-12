@@ -25,11 +25,11 @@ console.log(meta)
 <template>
   <div>
     <p>hi/[name].vue  <span class="mx-2" /> name: {{ params.name }}</p>
-    <div i-carbon-pedestrian inline-block text-4xl />
+    <div class="i-carbon-pedestrian inline-block text-4xl" />
     <p>
       Hi, {{ params.name }}
     </p>
-    <p text-sm op50>
+    <p class="text-sm op-50">
       <em>Dynamic route!</em>
     </p>
 
