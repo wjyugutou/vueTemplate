@@ -1,7 +1,6 @@
 import path from 'node:path'
 import Vue from '@vitejs/plugin-vue'
-import browserslist from 'browserslist'
-import { browserslistToTargets } from 'lightningcss'
+import autoprefixer from 'autoprefixer'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -48,13 +47,11 @@ export default defineConfig(({ mode }) => {
       }),
 
     ],
-    build: {
-      cssMinify: 'lightningcss',
-    },
     css: {
-      transformer: 'lightningcss',
-      lightningcss: {
-        targets: browserslistToTargets(browserslist()),
+      postcss: {
+        plugins: [
+          autoprefixer(),
+        ],
       },
     },
   }
