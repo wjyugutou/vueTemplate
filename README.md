@@ -9,7 +9,7 @@
 自动注册组件 [unplugin-vue-components](https://github.com/antfu/vite-plugin-components)
 
 # ENV
-env 类型 写在 `src/vite-env.d.ts`
+env 类型 写在 `types/vite-env.d.ts`
 ```ts
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
