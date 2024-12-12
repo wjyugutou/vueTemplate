@@ -1,11 +1,11 @@
 import {
   defineConfig,
-  presetAttributify,
+  // presetAttributify,
   presetIcons,
   presetUno,
   presetWebFonts,
   transformerDirectives, // @apply
-  // transformerVariantGroup,
+  transformerVariantGroup,
 } from 'unocss'
 
 export default defineConfig({
@@ -14,7 +14,7 @@ export default defineConfig({
   ],
   presets: [
     presetUno(),
-    presetAttributify(),
+    // presetAttributify(),
     presetIcons({
       scale: 1.2,
       warn: true,
@@ -29,6 +29,6 @@ export default defineConfig({
   ],
   transformers: [
     transformerDirectives(),
-    // transformerVariantGroup(),
+    transformerVariantGroup(),
   ],
 })
