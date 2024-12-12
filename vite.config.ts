@@ -8,6 +8,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  envDir: './env',
   resolve: {
     alias: {
       '@/': `${path.resolve(__dirname, 'src')}/`,

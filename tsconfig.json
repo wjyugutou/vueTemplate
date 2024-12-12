@@ -3,8 +3,8 @@
     "target": "es2016",
     "jsx": "preserve",
     "lib": ["DOM", "ESNext"],
-    "module": "ESNext",
     "baseUrl": ".",
+    "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
       "~/*": ["src/*"],
@@ -12,7 +12,6 @@
     },
     "resolveJsonModule": true,
     "types": [
-      "vite/client",
       "unplugin-vue-router/client"
     ],
     "allowJs": true,
@@ -23,10 +22,5 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src",
-    "vite.config.ts",
-    "types",
-    "unocss.config.ts"
-  ]
+  "include": ["src", "vite.config.ts", "types", "unocss.config.ts"]
 }
