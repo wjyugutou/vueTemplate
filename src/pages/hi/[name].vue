@@ -1,6 +1,6 @@
 <route lang="yaml">
 {
-  alias: ['hii/:name'],
+  alias: ['/hii/:name'],
   meta: {
     title: "Name113322"
   }
