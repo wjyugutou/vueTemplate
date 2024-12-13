@@ -38,4 +38,7 @@ export default antfu({
       'sort-keys': 'off',
     },
   },
+  {
+    ignores: ['cursorrules'],
+  },
 ])

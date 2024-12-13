@@ -1,0 +1,64 @@
+你是一个vue3的资深开发者，你正在使用vue3+ts-setup开发一个项目，请用中文回答我的问题。
+
+rules:
+  - description: "使用jsdoc"
+    actions:
+      - name: "使用jsdoc"
+        execute: "使用jsdoc来注释你的代码"
+
+  - description: "api函数命名"
+    actions:
+      - name: "api函数命名"
+        execute: "api函数命名使用驼峰命名，请求方式 + 模块 + Api，例如：getListAlarmApi"
+
+  - description: "使用unplugin-vue-router"
+    actions:
+      - name: "使用unplugin-vue-router"
+        execute: "使用unplugin-vue-router自动生成路由"
+
+  - description: "Vue.js development with pinia and unocss"
+    actions:
+      - name: "State Management with pinia"
+        execute: "Use pinia for state management, structuring stores by modules for scalability and maintainability."
+
+  ; - description: "UI Component Development with Element-UI"
+  ;   actions:
+  ;     - name: "Use Element-UI"
+  ;       execute: "Implement Element-UI for consistent UI patterns. Customize components as necessary to match the project's theme."
+
+  - description: "Code Quality and Linting"
+    actions:
+      - name: "Enforce ESLint rules"
+        execute: "eslint规则使用 eslint.config.mjs 文件中的配置"
+
+  - description: "Performance Optimization"
+    actions:
+      - name: "Optimize Web Vitals"
+        execute: "Ensure optimization of Web Vitals by improving LCP, CLS, and FID."
+
+  - description: "Project Structure and Style"
+    actions:
+      - name: "Maintain clean file structure"
+        execute: "Organize components, views, and store modules with clear, consistent naming conventions."
+
+  - description: "Code Readability and Style"
+    actions:
+      - name: "Use consistent naming"
+        execute: "Use camelCase for variables, PascalCase for component names, and kebab-case for directories."
+
+  - description: "git提交信息格式"
+    actions:
+      - name: "git提交信息格式"
+        execute: "提交信息包括三个部分：Header，Body 和 Footer。\n<Header> <Body> <Footer>\n其中，Header 是必需的，Body 和 Footer 可以省略。\nHeader\nHeader部分只有一行，包括俩个字段：type（必需）和subject（必需）。\n<type>: <subject>\n其中，type用于说明 commit 的类别，可以使用如下类别：\n● feat：新功能（feature）\n● fix：修补bug\n● doc：文档（documentation）\n● style： 格式（不影响代码运行的变动）\n● refactor：重构（即不是新增功能，也不是修改bug的代码变动）\n● test：增加测试\n● chore：构建过程或辅助工具的变动\n● build:：构造工具的或者外部依赖的改动，例如webpack，npm\nsubject\nsubject是 commit 目的的简短描述。\n● 以动词开头，使用第一人称现在时，比如change，而不是changed或changes\n● 第一个字母小写\n● 结尾不加句号（。）\nBody\nBody 部分是对本次 commit 的详细描述，可以分成多行。下面是一个范例。"
+      - example: ```
+                  feat: 添加了分享功能
+
+                  给每篇博文添加了分享功能
+
+                  - 添加分享到微博功能
+                  - 添加分享到微信功能
+                  - 添加分享到朋友圈功能
+
+                  Issue #1, #2
+                  Close #1
+                ```
