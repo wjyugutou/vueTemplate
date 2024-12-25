@@ -1,11 +1,17 @@
+<script setup lang="ts">
+function toggleThemeMode() {
+  toggleDark()
+}
+</script>
+
 <template>
-  <nav text-xl mt-6 inline-flex gap-2>
-    <button icon-btn @click="toggleDark()">
-      <div dark:i-carbon-moon i-carbon-sun />
+  <nav class="mt-6 inline-flex gap-2 text-xl">
+    <button class="icon-btn" @click="toggleThemeMode">
+      <div class="dark:i-carbon-moon i-carbon-sun" />
     </button>
 
     <a
-      icon-btn i-carbon-logo-github
+      class="icon-btn i-carbon-logo-github"
       rel="noreferrer"
       href="https://github.com/antfu/vitesse-lite"
       target="_blank"

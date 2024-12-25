@@ -7,3 +7,8 @@ dist-ssr
 node_modules
 .idea/
 *.log
+
+# 压缩文件
+*.zip
+*.7z
+*.rar
