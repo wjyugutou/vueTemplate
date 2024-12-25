@@ -1,17 +1,27 @@
 <script setup lang="ts">
-const name = ref('')
+const userStore = useUserStore()
 
 const router = useRouter()
 
 function go() {
-  if (name.value)
-    router.push(`/hii/${encodeURIComponent(name.value)}`)
+  if (userStore.name)
+    router.push(`/hii/${encodeURIComponent(userStore.name)}`)
+}
+
+function changeUsename() {
+  // 生成随机名字
+  let _name = ''
+  const nameLength = Math.floor(Math.random() * 5) + 5
+  for (let i = 0; i < nameLength; i++) {
+    _name += String.fromCharCode(Math.floor(Math.random() * 26) + 97)
+  }
+  userStore.name = _name
 }
 </script>
 
 <template>
   <div>
-    <div class="i-carbon-campsite inline-block text-4xl" />
+    <div class="i-carbon-campsite inline-block cursor-pointer text-4xl" @click="changeUsename" />
     <p>
       <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
         Vitesse Lite
@@ -25,7 +35,7 @@ function go() {
 
     <input
       id="input"
-      v-model="name"
+      v-model="userStore.name"
       placeholder="What's your name?"
       type="text"
       autocomplete="false"
@@ -36,7 +46,7 @@ function go() {
     <div>
       <button
         class="btn m-3 text-sm"
-        :disabled="!name"
+        :disabled="!userStore.name"
         @click="go"
       >
         Go
