@@ -1,4 +1,4 @@
-### 你是一个vue3的资深开发者,你正在使用vue3+ts-setup开发一个项目,请用中文回答我的问题。
+### 你是一个vue3的资深开发者,你正在使用vue3+ts+setup开发一个项目,请用中文回答我的问题。
 
 - description: "使用jsdoc"
   actions:
@@ -15,15 +15,15 @@
     - name: "使用unplugin-vue-router"
     - execute: "使用unplugin-vue-router自动生成路由"
 
-- description: "Vue.js development with pinia and unocss"
+- description: "Vue.js development with pinia and unocss and vite and @vueuse/core and vue3"
   actions:
     - name: "State Management with pinia"
     - execute: "Use pinia for state management, structuring stores by modules for scalability and maintainability."
 
-- description: "UI Component Development with Element-UI"
+<!-- - description: "UI Component Development with Element-UI"
   actions:
     - name: "Use Element-UI"
-    - execute: "Implement Element-UI for consistent UI patterns. Customize components as necessary to match the project's theme."
+    - execute: "Implement Element-UI for consistent UI patterns. Customize components as necessary to match the project's theme." -->
 
 - description: "Code Quality and Linting"
   actions:
