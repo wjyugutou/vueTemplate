@@ -16,3 +16,7 @@ interface ImportMetaEnv {
   // 更多环境变量...
 }
 ```
+
+# 代码风格
+使用 eslint + @antfu/eslint-config
+```bash
