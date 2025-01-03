@@ -9,11 +9,16 @@
 自动注册组件 [unplugin-vue-components](https://github.com/antfu/vite-plugin-components)
 
 # ENV
+
 env 类型 写在 `types/vite-env.d.ts`
+
 ```ts
 interface ImportMetaEnv {
+  // 本身变量
   readonly VITE_APP_TITLE: string
   // 更多环境变量...
+  // color schema storage key
+  readonly VITE_COLOR_SCHEMA_STORAGE_KEY: string
 }
 ```
 
