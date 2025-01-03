@@ -1,0 +1,68 @@
+name: Auto Create and Merge PR
+
+on:
+  push:
+    branches:
+      - '**'  # 监听所有分支的推送事件
+
+jobs:
+  create-and-merge-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get branch name
+        id: branch-name
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+
+      - name: Check if the actor is the repository owner
+        id: check-actor
+        run: |
+          ACTOR=${{ github.actor }}
+          OWNER=${{ github.repository_owner }}
+          if [ "$ACTOR" == "$OWNER" ]; then
+            echo "IS_OWNER=true" >> $GITHUB_ENV
+          else
+            echo "IS_OWNER=false" >> $GITHUB_ENV
+          fi
+      - name: Create Pull Request
+        if: env.IS_OWNER == 'true'
+        id: create-pr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.BRANCH_NAME }}
+          base: main  # 假设你要合并到 main 分支
+          title: "Auto PR from ${{ env.BRANCH_NAME }}"
+          body: "This is an automated Pull Request created from branch ${{ env.BRANCH_NAME }}."
+          draft: false
+
+      - name: Attempt to Merge Pull Request
+        if: env.IS_OWNER == 'true' && steps.create-pr.outputs.pull-request-number != ''
+        id: attempt-merge
+        run: |
+          PR_NUMBER=${{ steps.create-pr.outputs.pull-request-number }}
+          MERGE_RESULT=$(gh pr merge $PR_NUMBER --merge --delete-branch 2>&1)
+          echo "$MERGE_RESULT"
+          if echo "$MERGE_RESULT" | grep -q "merge conflict"; then
+            echo "HAS_CONFLICT=true" >> $GITHUB_ENV
+          else
+            echo "HAS_CONFLICT=false" >> $GITHUB_ENV
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve Conflicts by Overwriting Base Branch
+        if: env.IS_OWNER == 'true' && env.HAS_CONFLICT == 'true'
+        run: |
+          # 强制将新分支的代码推送到目标分支
+          git fetch origin ${{ env.BRANCH_NAME }}
+          git checkout -b temp-branch origin/${{ env.BRANCH_NAME }}
+          git checkout main  # 切换到目标分支
+          git reset --hard temp-branch  # 强制覆盖目标分支
+          git push origin main --force  # 强制推送
+          git branch -D temp-branch  # 删除临时分支
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
