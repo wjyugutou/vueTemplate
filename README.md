@@ -27,3 +27,6 @@ interface ImportMetaEnv {
 
 # 请求
 请求使用alova + fetchAdapter
+
+# 样式
+使用unocss
