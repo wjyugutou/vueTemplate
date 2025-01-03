@@ -6,11 +6,11 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 
-// export default defineConfig(({ mode }) => {
-export default defineConfig(() => {
-  // const env = loadEnv(mode, './env') as ImportMetaEnv
+// export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, './env') as ImportMetaEnv
 
   return {
     envDir: './env',
@@ -22,7 +22,7 @@ export default defineConfig(() => {
     server: {
       proxy: {
         '/api': {
-          target: 'http://localhost:3000',
+          target: env.VITE_BASE_URL,
           changeOrigin: true,
           rewrite: path => path.replace(/^\/api/, ''),
         },
