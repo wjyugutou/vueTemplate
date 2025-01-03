@@ -46,7 +46,7 @@ jobs:
           echo "pr_url=$pr_url" >> $GITHUB_ENV
 
       - name: Assign PR to Repository Owner (if conflict)
-        if: env.pr_url == "conflict"
+        if: ${{ env.pr_url == 'conflict' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
