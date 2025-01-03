@@ -1,68 +1,61 @@
-name: Auto Create and Merge PR
+name: Auto PR to Main (Owner Only)
 
 on:
   push:
-    branches:
-      - '**'  # 监听所有分支的推送事件
+    branches-ignore:
+      - main
 
 jobs:
-  create-and-merge-pr:
+  create-pr:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Check if the actor is the repository owner
+        id: check-owner
+        run: |
+          owner=$(echo "${{ github.repository }}" | cut -d'/' -f1)
+          if [ "${{ github.actor }}" != "$owner" ]; then
+            echo "This push was made by ${{ github.actor }}, not the repository owner ($owner)."
+            exit 1
+          fi
+
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Get branch name
-        id: branch-name
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
-
-      - name: Check if the actor is the repository owner
-        id: check-actor
+      - name: Configure Git
         run: |
-          ACTOR=${{ github.actor }}
-          OWNER=${{ github.repository_owner }}
-          if [ "$ACTOR" == "$OWNER" ]; then
-            echo "IS_OWNER=true" >> $GITHUB_ENV
-          else
-            echo "IS_OWNER=false" >> $GITHUB_ENV
-          fi
-      - name: Create Pull Request
-        if: env.IS_OWNER == 'true'
-        id: create-pr
-        uses: peter-evans/create-pull-request@v4
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Set up GitHub CLI
+        uses: actions/setup-node@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.BRANCH_NAME }}
-          base: main  # 假设你要合并到 main 分支
-          title: "Auto PR from ${{ env.BRANCH_NAME }}"
-          body: "This is an automated Pull Request created from branch ${{ env.BRANCH_NAME }}."
-          draft: false
+          node-version: '16'
 
-      - name: Attempt to Merge Pull Request
-        if: env.IS_OWNER == 'true' && steps.create-pr.outputs.pull-request-number != ''
-        id: attempt-merge
-        run: |
-          PR_NUMBER=${{ steps.create-pr.outputs.pull-request-number }}
-          MERGE_RESULT=$(gh pr merge $PR_NUMBER --merge --delete-branch 2>&1)
-          echo "$MERGE_RESULT"
-          if echo "$MERGE_RESULT" | grep -q "merge conflict"; then
-            echo "HAS_CONFLICT=true" >> $GITHUB_ENV
-          else
-            echo "HAS_CONFLICT=false" >> $GITHUB_ENV
-          fi
+      - name: Create Pull Request
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Resolve Conflicts by Overwriting Base Branch
-        if: env.IS_OWNER == 'true' && env.HAS_CONFLICT == 'true'
+        id: create-pr
         run: |
-          # 强制将新分支的代码推送到目标分支
-          git fetch origin ${{ env.BRANCH_NAME }}
-          git checkout -b temp-branch origin/${{ env.BRANCH_NAME }}
-          git checkout main  # 切换到目标分支
-          git reset --hard temp-branch  # 强制覆盖目标分支
-          git push origin main --force  # 强制推送
-          git branch -D temp-branch  # 删除临时分支
+          branch_name=$(echo "${{ github.ref }}" | sed 's|refs/heads/||')
+          pr_url=$(gh pr create \
+            --base main \
+            --head "$branch_name" \
+            --title "Auto PR: Merge $branch_name into main" \
+            --body "This PR was automatically created to merge changes from $branch_name into main." || echo "conflict")
+          echo "pr_url=$pr_url" >> $GITHUB_ENV
+
+      - name: Assign PR to Repository Owner (if conflict)
+        if: env.pr_url == "conflict"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          owner=$(echo "${{ github.repository }}" | cut -d'/' -f1)
+          branch_name=$(echo "${{ github.ref }}" | sed 's|refs/heads/||')
+          gh pr create \
+            --base main \
+            --head "$branch_name" \
+            --title "Auto PR: Merge $branch_name into main" \
+            --body "This PR was automatically created to merge changes from $branch_name into main. **However, it has conflicts. Please review and resolve them.**"
+          pr_number=$(gh pr list --state open --head "$branch_name" --json number -q '.[0].number')
+          gh pr edit "$pr_number" --add-assignee "$owner"
