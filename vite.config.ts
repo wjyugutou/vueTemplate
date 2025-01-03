@@ -6,9 +6,10 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 
-export default defineConfig(({ mode }) => {
+// export default defineConfig(({ mode }) => {
+export default defineConfig(() => {
   // const env = loadEnv(mode, './env') as ImportMetaEnv
 
   return {
@@ -16,6 +17,15 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@/': `${path.resolve(__dirname, 'src')}/`,
+      },
+    },
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, ''),
+        },
       },
     },
     plugins: [
@@ -38,8 +48,10 @@ export default defineConfig(({ mode }) => {
         ],
         dts: './types/auto-imports.d.ts',
         dirs: [
-          './src/composables',
+          './src/hooks',
           './src/store',
+          './src/utils',
+          './src/api',
         ],
       }),
 

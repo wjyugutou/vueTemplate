@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { postTestFileApi } from '@/api/test'
+
 const userStore = useUserStore()
 
 const router = useRouter()
@@ -17,6 +19,40 @@ function changeUsename() {
   }
   userStore.name = _name
 }
+
+async function getTest() {
+  const res = await getTestApi({ params: 1, msg: 'getTest' })
+  console.log('getTest', res)
+}
+async function postTest() {
+  const res = await postTestApi({ data: 1, msg: 'postTest' })
+  console.log('postTest', res)
+}
+
+async function getTestErr() {
+  const res = await getTestErrApi()
+  console.log('getTestErr', res)
+}
+async function postTestFile() {
+  const res = await postTestFileApi({ path: 'all.2025-01-03.log' })
+  console.log('postTestFile', res)
+  // 判断res是否为blob类型
+  if (res.data instanceof Blob) {
+    const url = window.URL.createObjectURL(res.data)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = decodeURIComponent(res.filename)
+    a.click()
+    window.URL.revokeObjectURL(url)
+  }
+}
+
+const reqList = [
+  { name: 'getTestApi', request: () => getTest() },
+  { name: 'getTestErrApi', request: () => getTestErr() },
+  { name: 'postTestApi', request: () => postTest() },
+  { name: 'postTestFileApi', request: () => postTestFile() },
+]
 </script>
 
 <template>
@@ -45,11 +81,18 @@ function changeUsename() {
 
     <div>
       <button
-        class="btn m-3 text-sm"
+        class="m-3 text-sm btn"
         :disabled="!userStore.name"
         @click="go"
       >
         Go
+      </button>
+    </div>
+
+    <div>
+      <h1>Request test</h1>
+      <button v-for="request, index in reqList" :key="index" class="ml-3 btn" @click="request.request">
+        {{ request.name }}
       </button>
     </div>
   </div>

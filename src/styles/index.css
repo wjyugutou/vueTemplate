@@ -1,0 +1,20 @@
+:root {
+  --color-white: #fff;
+  --color-black: #333;
+
+  --color-primary: light-dark(#42b883, #2c3e50);
+  --color-primary-hover: light-dark(#3ba67b, #2c3e50);
+}
+
+html {
+  color-scheme: light dark;
+
+  &.dark {
+    color-scheme: dark;
+  }
+
+  &.light {
+    color-scheme: light;
+  }
+}
+
