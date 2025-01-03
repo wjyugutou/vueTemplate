@@ -19,3 +19,6 @@ interface ImportMetaEnv {
 
 # 代码风格
 使用 eslint + @antfu/eslint-config
+
+# 请求
+请求使用alova + fetchAdapter
