@@ -26,23 +26,26 @@ const alovaInstance = createAlova({
   //   // config.config.headers.Authorization = `Bearer ${token}`
   // },
   responded: async (response, instance) => {
+    const contentType = response.headers.get('content-type')
     if (response.status === 200 && response.ok) {
-      if (instance.meta?.blob) {
-        // 根据实际情况变更
-        return {
-          data: await response.blob(),
-          filename: response.headers.get('Content-Disposition'),
+      if (contentType?.includes('application/json')) {
+        const res = await response.json()
+        if (res.code === 200) {
+          return instance.meta?.filterData !== false ? res.data : res
+        }
+        else {
+          // 根据实际情况变更
+          // alert(res.msg || '请求失败')
+          return Promise.reject(res.msg)
         }
       }
-      const res = await response.json()
-      if (res.code === 200) {
-        return instance.meta?.filterData !== false ? res.data : res
-      }
-      else {
-        // 根据实际情况变更
-        // alert(res.msg || '请求失败')
-        return Promise.reject(res.msg)
-      }
+      // if (instance.meta?.blob) {
+      //   // 根据实际情况变更
+      //   return {
+      //     data: await response.blob(),
+      //     filename: response.headers.get('Content-Disposition'),
+      //   }
+      // }
     }
     else {
       // 根据实际情况变更
