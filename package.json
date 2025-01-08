@@ -3,7 +3,7 @@
   "private": true,
   "packageManager": "pnpm@9.15.0",
   "scripts": {
-    "build": "vite build",
+    "build": "tsc -b && vite build",
     "dev": "vite --port 3333",
     "update:dep": "pnpm dlx taze latest -w",
     "fix": "eslint --fix .",
