@@ -10,9 +10,7 @@
       "@/*": ["src/*"]
     },
     "resolveJsonModule": true,
-    "types": [
-      "unplugin-vue-router/client"
-    ],
+
     "allowJs": true,
     "strict": true,
     "strictNullChecks": true,
