@@ -1,15 +1,14 @@
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, type ToRefs } from 'vue'
 
 interface DictItem {
-  dictValue: string
   dictLabel: string
+  dictValue: string | number
+  [key: string]: any
 }
 
-interface Dicts<T extends string[] | string> {
+interface DictObj {
   list: { value: string, label: string }[]
-  map: T extends string[] ?
-      { [key in T[number]]: string } : T extends string ?
-          { [key in T]: string } : unknown
+  map: Record<string, string | number | boolean>
 }
 
 async function getDicts(dictType: string): Promise<{ data: DictItem[] }> {
@@ -20,50 +19,29 @@ async function getDicts(dictType: string): Promise<{ data: DictItem[] }> {
   }
 }
 
-export function useDict<T extends string[]>(dict: T): { [K in T[number]]: any }
-export function useDict<T extends string>(dict: T): { [K in T]: any }
+type Dict<T extends [...string[]]> = {
+  [K in T[number]]: DictObj
+}
 
-export function useDict<T extends string | string[]>(dict: T) {
-  const dicts = reactive({} as Dicts<T>)
+export function useDict<T extends string[]>(...dict: T): ToRefs<Dict<T>> {
+  const dicts = reactive({}) as Dict<T>
 
-  if (Array.isArray(dict)) {
-    dict.forEach((dictType) => {
-      getDicts(dictType).then((res) => {
-        dicts[dictType] = transformDict(res.data)
-      })
+  dict.forEach((dictType) => {
+    getDicts(dictType).then((res) => {
+      dicts[dictType as T[number]] = transformDict(res.data)
     })
-  }
-  else {
-    getDicts(dict).then((res) => {
-      dicts[dict] = transformDict(res.data)
-    })
-  }
+  })
 
   return toRefs(dicts)
 }
 
-function transformDict(dictObjList: DictItem[]) {
+function transformDict(dictObjList: DictItem[]): DictObj {
   return {
     list: dictObjList.map(item => ({ value: item.dictValue, label: item.dictLabel })),
-    map: dictObjList.reduce((prev, item) => {
+    map: dictObjList.reduce<DictObj['map']>((prev, item) => {
       prev[item.dictValue] = item.dictLabel
       prev[item.dictLabel] = item.dictValue
       return prev
     }, {}),
   }
-}
-
-function a<T extends string[] | string>(s: T): T extends readonly string[] ? { [K in T[number]]: K } : { [K in T]: K } {
-  const obj = {} as { [key: string]: string }
-
-  if (Array.isArray(s)) {
-    s.forEach((item) => {
-      obj[item] = item
-    })
-  }
-  else {
-    obj[s] = s
-  }
-
-  return obj as T extends string[] ? { [K in T[number]]: K } : { [K in T]: K }
 }

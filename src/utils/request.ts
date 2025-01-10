@@ -18,6 +18,10 @@ const alovaInstance = createAlova({
   baseURL: '/api',
   timeout: 10000,
   statesHook: vueHook,
+  cacheFor: {
+    GET: 1000 * 60 * 1, // 1min
+    POST: 1000 * 60 * 1, // 1min
+  },
   requestAdapter: adapterFetch(),
   // beforeRequest: (config) => {
   //   console.log('beforeRequest', config)
