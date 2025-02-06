@@ -1,4 +1,5 @@
 import { reactive, toRefs, type ToRefs } from 'vue'
+import { useRequest } from 'alova'
 
 interface DictItem {
   dictLabel: string
@@ -7,7 +8,7 @@ interface DictItem {
 }
 
 interface DictObj {
-  list: { value: string, label: string }[]
+  list: { value: DictItem['dictValue'], label: DictItem['dictLabel'] }[]
   map: Record<string, string | number | boolean>
 }
 
@@ -23,6 +24,16 @@ type Dict<T extends [...string[]]> = {
   [K in T[number]]: DictObj
 }
 
+
+export function useDict$1<T extends string[]>(...dict: T) {
+  useRequest()
+}
+
+
+/**
+ * 字典hooks
+ * @param dict 字典值
+ */
 export function useDict<T extends string[]>(...dict: T): ToRefs<Dict<T>> {
   const dicts = reactive({}) as Dict<T>
 
