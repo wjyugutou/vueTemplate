@@ -29,15 +29,16 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins: [
-      Vue(),
-      // https://github.com/antfu/unocss
-      // see unocss.config.ts for config
-      UnoCSS(),
       // https://uvr.esm.is/
       VueRouter({
         exclude: ['src/pages/auth/**'],
         dts: './types/vue-router.d.ts',
       }),
+      // ⚠️ Vue must be placed after VueRouter()
+      Vue(),
+      // https://github.com/antfu/unocss
+      // see unocss.config.ts for config
+      UnoCSS(),
       // https://github.com/antfu/unplugin-auto-import
       AutoImport({
         imports: [
