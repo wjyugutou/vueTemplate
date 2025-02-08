@@ -18,11 +18,7 @@ function changeUsename() {
   userStore.name = _name
 }
 
-function testErr() {
-  request.Get('/test/err').catch((err) => {
-    console.log(err)
-  })
-}
+useValidate()
 </script>
 
 <template>
@@ -52,12 +48,6 @@ function testErr() {
         @click="go"
       >
         Go
-      </button>
-    </div>
-
-    <div>
-      <button class="m-3 text-sm btn" @click="testErr">
-        dict
       </button>
     </div>
   </div>

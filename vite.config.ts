@@ -52,7 +52,6 @@ export default defineConfig(({ mode }) => {
           './src/hooks',
           './src/store',
           './src/utils',
-          './src/api',
         ],
       }),
 
