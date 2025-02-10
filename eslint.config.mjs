@@ -5,11 +5,7 @@ export default antfu({
   yaml: false,
   test: false,
   jsx: false,
-  formatters: {
-    prettierOptions: {
-      plugins: ['prettier-plugin-tailwindcss'],
-    },
-  },
+  // unocss: true,
 }, [
   {
     rules: {
@@ -18,6 +14,8 @@ export default antfu({
   },
   {
     files: ['*.vue'],
+    // todo  eslint-plugin-tailwindcss 暂时不支持 tailwindcss v4
+    plugins: ['eslint-plugin-tailwindcss'],
     rules: {
       // 关闭，可使 对象/数组 自由换行
       'antfu/consistent-list-newline': 'off',
