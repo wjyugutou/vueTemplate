@@ -1,10 +1,39 @@
-:root {
-  --color-white: #fff;
-  --color-black: #333;
+@import "tailwindcss";
 
-  --color-primary: light-dark(#42b883, #2c3e50);
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* 使用 .dark 来进行暗黑模式控制 而不是 color-scheme */
+@variant dark (&:where(.dark, .dark *));
+
+@plugin "@iconify/tailwind4";
+
+@theme {
+  --color-primary-500: light-dark(#42b883, #2c3e50);
   --color-primary-hover: light-dark(#3ba67b, #2c3e50);
 }
+
+.btn {
+  color: white;
+  background-color: var(--color-blue-400);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+
+  &:hover {
+    background-color: var(--color-blue-300);
+  }
+} 
+ 
+.icon-btn {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
 
 html {
   color-scheme: light dark;
@@ -17,4 +46,5 @@ html {
     color-scheme: light;
   }
 }
+
 

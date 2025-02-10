@@ -5,7 +5,11 @@ export default antfu({
   yaml: false,
   test: false,
   jsx: false,
-  unocss: true,
+  formatters: {
+    prettierOptions: {
+      plugins: ['prettier-plugin-tailwindcss'],
+    },
+  },
 }, [
   {
     rules: {

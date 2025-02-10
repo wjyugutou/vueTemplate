@@ -17,13 +17,11 @@ function changeUsename() {
   }
   userStore.name = _name
 }
-
-useValidate()
 </script>
 
 <template>
   <div>
-    <div class="i-carbon-campsite inline-block cursor-pointer text-4xl" @click="changeUsename" />
+    <div class="icon-[carbon--campsite] inline-block cursor-pointer text-4xl" @click="changeUsename" />
     <p> Vitesse Lite </p>
     <p>
       <em class="text-sm op75">Opinionated Vite Starter Template</em>

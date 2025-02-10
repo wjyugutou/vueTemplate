@@ -1,11 +1,12 @@
 import path from 'node:path'
+import tailwindcss from '@tailwindcss/vite'
 import Vue from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
-import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
+
 import { defineConfig, loadEnv } from 'vite'
 
 // export default defineConfig(() => {
@@ -36,9 +37,8 @@ export default defineConfig(({ mode }) => {
       }),
       // ⚠️ Vue must be placed after VueRouter()
       Vue(),
-      // https://github.com/antfu/unocss
-      // see unocss.config.ts for config
-      UnoCSS(),
+      // https://tailwind.org.cn/
+      tailwindcss(),
       // https://github.com/antfu/unplugin-auto-import
       AutoImport({
         imports: [

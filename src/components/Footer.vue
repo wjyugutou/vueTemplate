@@ -6,14 +6,12 @@ function toggleThemeMode() {
 
 <template>
   <nav class="h-full flex items-center justify-center gap-2 text-xl">
-    <button class="icon-btn" @click="toggleThemeMode">
-      <div class="dark:i-carbon-moon i-carbon-sun" />
-    </button>
+    <button class="dark:icon-[carbon--moon] icon-[carbon--sun]" @click="toggleThemeMode" />
 
     <a
-      class="icon-btn i-carbon-logo-github"
+      class="icon-[carbon--logo-github]"
       rel="noreferrer"
-      href="https://github.com/antfu/vitesse-lite"
+      href="https://github.com/wjyugutou/vue-vite-template"
       target="_blank"
       title="GitHub"
     />

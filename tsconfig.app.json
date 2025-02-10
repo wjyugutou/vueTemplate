@@ -19,5 +19,5 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["src", "types", "unocss.config.ts"]
+  "include": ["src", "types"]
 }
