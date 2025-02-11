@@ -17,8 +17,6 @@ function changeUsename() {
   }
   userStore.name = _name
 }
-
-useValidate()
 </script>
 
 <template>

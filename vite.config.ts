@@ -1,3 +1,4 @@
+import type { EditableTreeNode } from 'unplugin-vue-router'
 import path from 'node:path'
 import Vue from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
@@ -31,11 +32,31 @@ export default defineConfig(({ mode }) => {
     plugins: [
       // https://uvr.esm.is/
       VueRouter({
-        exclude: ['src/pages/auth/**'],
         dts: './types/vue-router.d.ts',
+        extendRoute(r) {
+          function getRouteInfo(route: EditableTreeNode) {
+            console.log({
+              parent: {
+                path: route.parent?.path,
+                name: route.parent?.name,
+                meta: route.parent?.meta,
+                component: route.parent?.component,
+              },
+              path: route.path,
+              name: route.name,
+              meta: route.meta,
+              component: route.component,
+            })
+            if (route.children) {
+              route.children.forEach(getRouteInfo)
+            }
+          }
+          getRouteInfo(r)
+        },
       }),
       // ⚠️ Vue must be placed after VueRouter()
       Vue(),
+
       // https://github.com/antfu/unocss
       // see unocss.config.ts for config
       UnoCSS(),
