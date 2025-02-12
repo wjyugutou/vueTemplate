@@ -1,15 +1,18 @@
+import type { EditableTreeNode } from 'unplugin-vue-router'
 import path from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import Vue from '@vitejs/plugin-vue'
-import autoprefixer from 'autoprefixer'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 
 import { defineConfig, loadEnv } from 'vite'
+import Compression from 'vite-plugin-compression'
 
-// export default defineConfig(() => {
+/**
+ * mode: 'development' | 'production'
+ */
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, './env') as ImportMetaEnv
 
@@ -32,8 +35,27 @@ export default defineConfig(({ mode }) => {
     plugins: [
       // https://uvr.esm.is/
       VueRouter({
-        exclude: ['src/pages/auth/**'],
         dts: './types/vue-router.d.ts',
+        extendRoute(r) {
+          function getRouteInfo(route: EditableTreeNode) {
+            console.log({
+              parent: {
+                path: route.parent?.path,
+                name: route.parent?.name,
+                meta: route.parent?.meta,
+                component: route.parent?.component,
+              },
+              path: route.path,
+              name: route.name,
+              meta: route.meta,
+              component: route.component,
+            })
+            if (route.children) {
+              route.children.forEach(getRouteInfo)
+            }
+          }
+          getRouteInfo(r)
+        },
       }),
       // ⚠️ Vue must be placed after VueRouter()
       Vue(),
@@ -60,13 +82,15 @@ export default defineConfig(({ mode }) => {
         dts: './types/components.d.ts',
       }),
 
+      // gzip
+      env.VITE_BUILD_GZIP === 'true' && mode === 'production' && Compression({
+        verbose: true, // 输出压缩日志
+        disable: false, // 是否禁用压缩
+        threshold: 10240, // 对超过10KB的文件进行压缩
+        algorithm: 'gzip', // 使用gzip压缩
+        ext: '.gz', // 压缩后文件的扩展名
+        deleteOriginFile: false,
+      }),
     ],
-    css: {
-      postcss: {
-        plugins: [
-          autoprefixer(),
-        ],
-      },
-    },
   }
 })
