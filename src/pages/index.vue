@@ -5,7 +5,7 @@ const router = useRouter()
 
 function go() {
   if (userStore.name)
-    router.push(`/hii/${encodeURIComponent(userStore.name)}`)
+    router.push(`/hi/${encodeURIComponent(userStore.name)}`)
 }
 
 function changeUsename() {
