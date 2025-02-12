@@ -1,0 +1,94 @@
+{
+  "parent": {},
+  "fullPath": "/",
+  "path": "",
+  "name": "",
+  "meta": {},
+  "children": [
+    {
+      "parent": {
+        "path": "",
+        "fullPath": "/",
+        "name": "",
+        "meta": {}
+      },
+      "fullPath": "/",
+      "path": "/",
+      "name": "/",
+      "meta": {},
+      "children": [],
+      "component": "F:/CODE/demo/demo/vue-vite-template/src/pages/index.vue"
+    },
+    {
+      "parent": {
+        "path": "",
+        "fullPath": "/",
+        "name": "",
+        "meta": {}
+      },
+      "fullPath": "/:404(.*)",
+      "path": "/:404(.*)",
+      "name": "/[...404]",
+      "meta": {},
+      "children": [],
+      "component": "F:/CODE/demo/demo/vue-vite-template/src/pages/[...404].vue"
+    },
+    {
+      "parent": {
+        "path": "",
+        "fullPath": "/",
+        "name": "",
+        "meta": {}
+      },
+      "fullPath": "/auth",
+      "path": "/auth",
+      "name": "/auth",
+      "meta": {},
+      "children": []
+    },
+    {
+      "parent": {
+        "path": "",
+        "fullPath": "/",
+        "name": "",
+        "meta": {}
+      },
+      "fullPath": "/hi",
+      "path": "/hi",
+      "name": "/hi",
+      "meta": {},
+      "children": [
+        {
+          "parent": {
+            "path": "/hi",
+            "fullPath": "/hi",
+            "name": "/hi",
+            "meta": {}
+          },
+          "fullPath": "/hi",
+          "path": "",
+          "name": "/hi/",
+          "meta": {},
+          "children": [],
+          "component": "F:/CODE/demo/demo/vue-vite-template/src/pages/hi/index.vue"
+        },
+        {
+          "parent": {
+            "path": "/hi",
+            "fullPath": "/hi",
+            "name": "/hi",
+            "meta": {}
+          },
+          "fullPath": "/hi/:name",
+          "path": ":name",
+          "name": "/hi/[name]",
+          "meta": {
+            "title": "Name113322"
+          },
+          "children": [],
+          "component": "F:/CODE/demo/demo/vue-vite-template/src/pages/hi/[name].vue"
+        }
+      ]
+    }
+  ]
+}

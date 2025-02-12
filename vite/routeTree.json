@@ -1,0 +1,424 @@
+{
+  "node": {
+    "value": {
+      "_type": 0,
+      "rawSegment": "",
+      "pathSegment": "",
+      "subSegments": [
+        ""
+      ],
+      "_overrides": {},
+      "components": {}
+    },
+    "children": {},
+    "options": {
+      "extensions": [
+        ".vue"
+      ],
+      "exclude": [],
+      "routesFolder": [
+        {
+          "src": "F:/CODE/demo/demo/vue-vite-template/src/pages"
+        }
+      ],
+      "filePatterns": [
+        "**/*"
+      ],
+      "routeBlockLang": "json5",
+      "importMode": "async",
+      "root": "F:\\CODE\\demo\\demo\\vue-vite-template",
+      "dts": "./types/vue-router.d.ts",
+      "logs": false,
+      "_inspect": false,
+      "pathParser": {
+        "dotNesting": true
+      },
+      "watch": true,
+      "experimental": {}
+    },
+    "hasDefinePage": false,
+    "map": {}
+  },
+  "_children": [
+    {
+      "node": {
+        "value": {
+          "_type": 0,
+          "parent": {
+            "_type": 0,
+            "rawSegment": "",
+            "pathSegment": "",
+            "subSegments": [
+              ""
+            ],
+            "_overrides": {},
+            "components": {}
+          },
+          "rawSegment": "index",
+          "pathSegment": "",
+          "subSegments": [
+            ""
+          ],
+          "_overrides": {},
+          "components": {}
+        },
+        "children": {},
+        "parent": {
+          "value": {
+            "_type": 0,
+            "rawSegment": "",
+            "pathSegment": "",
+            "subSegments": [
+              ""
+            ],
+            "_overrides": {},
+            "components": {}
+          },
+          "children": {},
+          "options": {
+            "extensions": [
+              ".vue"
+            ],
+            "exclude": [],
+            "routesFolder": [
+              {
+                "src": "F:/CODE/demo/demo/vue-vite-template/src/pages"
+              }
+            ],
+            "filePatterns": [
+              "**/*"
+            ],
+            "routeBlockLang": "json5",
+            "importMode": "async",
+            "root": "F:\\CODE\\demo\\demo\\vue-vite-template",
+            "dts": "./types/vue-router.d.ts",
+            "logs": false,
+            "_inspect": false,
+            "pathParser": {
+              "dotNesting": true
+            },
+            "watch": true,
+            "experimental": {}
+          },
+          "hasDefinePage": false,
+          "map": {}
+        },
+        "options": {
+          "extensions": [
+            ".vue"
+          ],
+          "exclude": [],
+          "routesFolder": [
+            {
+              "src": "F:/CODE/demo/demo/vue-vite-template/src/pages"
+            }
+          ],
+          "filePatterns": [
+            "**/*"
+          ],
+          "routeBlockLang": "json5",
+          "importMode": "async",
+          "root": "F:\\CODE\\demo\\demo\\vue-vite-template",
+          "dts": "./types/vue-router.d.ts",
+          "logs": false,
+          "_inspect": false,
+          "pathParser": {
+            "dotNesting": true
+          },
+          "watch": true,
+          "experimental": {}
+        },
+        "hasDefinePage": false
+      }
+    },
+    {
+      "node": {
+        "value": {
+          "_type": 2,
+          "parent": {
+            "_type": 0,
+            "rawSegment": "",
+            "pathSegment": "",
+            "subSegments": [
+              ""
+            ],
+            "_overrides": {},
+            "components": {}
+          },
+          "rawSegment": "[...404]",
+          "pathSegment": ":404(.*)",
+          "subSegments": [
+            "",
+            {
+              "paramName": "404",
+              "modifier": "",
+              "optional": false,
+              "repeatable": false,
+              "isSplat": true
+            }
+          ],
+          "_overrides": {},
+          "components": {},
+          "params": [
+            {
+              "paramName": "404",
+              "modifier": "",
+              "optional": false,
+              "repeatable": false,
+              "isSplat": true
+            }
+          ]
+        },
+        "children": {},
+        "parent": {
+          "value": {
+            "_type": 0,
+            "rawSegment": "",
+            "pathSegment": "",
+            "subSegments": [
+              ""
+            ],
+            "_overrides": {},
+            "components": {}
+          },
+          "children": {},
+          "options": {
+            "extensions": [
+              ".vue"
+            ],
+            "exclude": [],
+            "routesFolder": [
+              {
+                "src": "F:/CODE/demo/demo/vue-vite-template/src/pages"
+              }
+            ],
+            "filePatterns": [
+              "**/*"
+            ],
+            "routeBlockLang": "json5",
+            "importMode": "async",
+            "root": "F:\\CODE\\demo\\demo\\vue-vite-template",
+            "dts": "./types/vue-router.d.ts",
+            "logs": false,
+            "_inspect": false,
+            "pathParser": {
+              "dotNesting": true
+            },
+            "watch": true,
+            "experimental": {}
+          },
+          "hasDefinePage": false,
+          "map": {}
+        },
+        "options": {
+          "extensions": [
+            ".vue"
+          ],
+          "exclude": [],
+          "routesFolder": [
+            {
+              "src": "F:/CODE/demo/demo/vue-vite-template/src/pages"
+            }
+          ],
+          "filePatterns": [
+            "**/*"
+          ],
+          "routeBlockLang": "json5",
+          "importMode": "async",
+          "root": "F:\\CODE\\demo\\demo\\vue-vite-template",
+          "dts": "./types/vue-router.d.ts",
+          "logs": false,
+          "_inspect": false,
+          "pathParser": {
+            "dotNesting": true
+          },
+          "watch": true,
+          "experimental": {}
+        },
+        "hasDefinePage": false
+      }
+    },
+    {
+      "node": {
+        "value": {
+          "_type": 0,
+          "parent": {
+            "_type": 0,
+            "rawSegment": "",
+            "pathSegment": "",
+            "subSegments": [
+              ""
+            ],
+            "_overrides": {},
+            "components": {}
+          },
+          "rawSegment": "auth",
+          "pathSegment": "auth",
+          "subSegments": [
+            "auth"
+          ],
+          "_overrides": {},
+          "components": {}
+        },
+        "children": {},
+        "parent": {
+          "value": {
+            "_type": 0,
+            "rawSegment": "",
+            "pathSegment": "",
+            "subSegments": [
+              ""
+            ],
+            "_overrides": {},
+            "components": {}
+          },
+          "children": {},
+          "options": {
+            "extensions": [
+              ".vue"
+            ],
+            "exclude": [],
+            "routesFolder": [
+              {
+                "src": "F:/CODE/demo/demo/vue-vite-template/src/pages"
+              }
+            ],
+            "filePatterns": [
+              "**/*"
+            ],
+            "routeBlockLang": "json5",
+            "importMode": "async",
+            "root": "F:\\CODE\\demo\\demo\\vue-vite-template",
+            "dts": "./types/vue-router.d.ts",
+            "logs": false,
+            "_inspect": false,
+            "pathParser": {
+              "dotNesting": true
+            },
+            "watch": true,
+            "experimental": {}
+          },
+          "hasDefinePage": false,
+          "map": {}
+        },
+        "options": {
+          "extensions": [
+            ".vue"
+          ],
+          "exclude": [],
+          "routesFolder": [
+            {
+              "src": "F:/CODE/demo/demo/vue-vite-template/src/pages"
+            }
+          ],
+          "filePatterns": [
+            "**/*"
+          ],
+          "routeBlockLang": "json5",
+          "importMode": "async",
+          "root": "F:\\CODE\\demo\\demo\\vue-vite-template",
+          "dts": "./types/vue-router.d.ts",
+          "logs": false,
+          "_inspect": false,
+          "pathParser": {
+            "dotNesting": true
+          },
+          "watch": true,
+          "experimental": {}
+        },
+        "hasDefinePage": false
+      }
+    },
+    {
+      "node": {
+        "value": {
+          "_type": 0,
+          "parent": {
+            "_type": 0,
+            "rawSegment": "",
+            "pathSegment": "",
+            "subSegments": [
+              ""
+            ],
+            "_overrides": {},
+            "components": {}
+          },
+          "rawSegment": "hi",
+          "pathSegment": "hi",
+          "subSegments": [
+            "hi"
+          ],
+          "_overrides": {},
+          "components": {}
+        },
+        "children": {},
+        "parent": {
+          "value": {
+            "_type": 0,
+            "rawSegment": "",
+            "pathSegment": "",
+            "subSegments": [
+              ""
+            ],
+            "_overrides": {},
+            "components": {}
+          },
+          "children": {},
+          "options": {
+            "extensions": [
+              ".vue"
+            ],
+            "exclude": [],
+            "routesFolder": [
+              {
+                "src": "F:/CODE/demo/demo/vue-vite-template/src/pages"
+              }
+            ],
+            "filePatterns": [
+              "**/*"
+            ],
+            "routeBlockLang": "json5",
+            "importMode": "async",
+            "root": "F:\\CODE\\demo\\demo\\vue-vite-template",
+            "dts": "./types/vue-router.d.ts",
+            "logs": false,
+            "_inspect": false,
+            "pathParser": {
+              "dotNesting": true
+            },
+            "watch": true,
+            "experimental": {}
+          },
+          "hasDefinePage": false,
+          "map": {}
+        },
+        "options": {
+          "extensions": [
+            ".vue"
+          ],
+          "exclude": [],
+          "routesFolder": [
+            {
+              "src": "F:/CODE/demo/demo/vue-vite-template/src/pages"
+            }
+          ],
+          "filePatterns": [
+            "**/*"
+          ],
+          "routeBlockLang": "json5",
+          "importMode": "async",
+          "root": "F:\\CODE\\demo\\demo\\vue-vite-template",
+          "dts": "./types/vue-router.d.ts",
+          "logs": false,
+          "_inspect": false,
+          "pathParser": {
+            "dotNesting": true
+          },
+          "watch": true,
+          "experimental": {}
+        },
+        "hasDefinePage": false
+      }
+    }
+  ]
+}

@@ -1,6 +1,5 @@
 <route lang="yaml">
 {
-  alias: ['/hii/:name'],
   meta: {
     title: "Name113322"
   }
@@ -10,12 +9,6 @@
 <script setup lang="ts">
 const router = useRouter()
 const route = useRoute('/hi/[name]')
-
-definePage({
-  meta: {
-    auth: 'admin',
-  },
-})
 
 const { params, meta } = route
 
@@ -35,7 +28,7 @@ console.log(meta)
 
     <div>
       <button
-        class="btn m-3 mt-8 text-sm"
+        class="m-3 mt-8 text-sm btn"
         @click="router.back()"
       >
         Back
