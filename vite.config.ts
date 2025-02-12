@@ -1,7 +1,6 @@
 import type { EditableTreeNode } from 'unplugin-vue-router'
 import path from 'node:path'
 import Vue from '@vitejs/plugin-vue'
-import autoprefixer from 'autoprefixer'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -82,12 +81,5 @@ export default defineConfig(({ mode }) => {
       }),
 
     ],
-    css: {
-      postcss: {
-        plugins: [
-          autoprefixer(),
-        ],
-      },
-    },
   }
 })
