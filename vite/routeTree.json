@@ -252,10 +252,10 @@
             "_overrides": {},
             "components": {}
           },
-          "rawSegment": "hi",
-          "pathSegment": "hi",
+          "rawSegment": "auth",
+          "pathSegment": "auth",
           "subSegments": [
-            "hi"
+            "auth"
           ],
           "_overrides": {},
           "components": {}
@@ -343,10 +343,10 @@
             "_overrides": {},
             "components": {}
           },
-          "rawSegment": "auth",
-          "pathSegment": "auth",
+          "rawSegment": "hi",
+          "pathSegment": "hi",
           "subSegments": [
-            "auth"
+            "hi"
           ],
           "_overrides": {},
           "components": {}
