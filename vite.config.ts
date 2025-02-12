@@ -1,4 +1,3 @@
-import type { EditableTreeNode } from 'unplugin-vue-router'
 import path from 'node:path'
 import { VantResolver } from '@vant/auto-import-resolver'
 import Vue from '@vitejs/plugin-vue'
@@ -9,6 +8,7 @@ import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
 import Compression from 'vite-plugin-compression'
+import { beforeWriteFilesFn } from './vite/auto-route-register'
 
 /**
  * mode: 'development' | 'production'
@@ -36,25 +36,8 @@ export default defineConfig(({ mode }) => {
       // https://uvr.esm.is/
       VueRouter({
         dts: './types/vue-router.d.ts',
-        extendRoute(r) {
-          function getRouteInfo(route: EditableTreeNode) {
-            console.log({
-              parent: {
-                path: route.parent?.path,
-                name: route.parent?.name,
-                meta: route.parent?.meta,
-                component: route.parent?.component,
-              },
-              path: route.path,
-              name: route.name,
-              meta: route.meta,
-              component: route.component,
-            })
-            if (route.children) {
-              route.children.forEach(getRouteInfo)
-            }
-          }
-          getRouteInfo(r)
+        beforeWriteFiles(rootRoute) {
+          beforeWriteFilesFn(rootRoute)
         },
       }),
       // ⚠️ Vue must be placed after VueRouter()

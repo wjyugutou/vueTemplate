@@ -8,9 +8,11 @@ const router = createRouter({
 
 // This will update routes at runtime without reloading the page
 if (import.meta.hot) {
-  handleHotUpdate(router, (newRoutes) => {
-    console.log('newRoutes', newRoutes)
-  })
+  handleHotUpdate(router)
 }
+
+router.beforeEach((to) => {
+  console.log('beforeEach', to)
+})
 
 export default router
