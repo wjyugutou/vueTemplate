@@ -44,36 +44,7 @@
       "path": "/auth",
       "name": "/auth",
       "meta": {},
-      "children": [
-        {
-          "parent": {
-            "path": "/auth",
-            "fullPath": "/auth",
-            "name": "/auth",
-            "meta": {}
-          },
-          "fullPath": "/auth/system",
-          "path": "system",
-          "name": "/auth/system",
-          "meta": {},
-          "children": [],
-          "component": "F:/CODE/demo/demo/vue-vite-template/src/pages/auth/system.vue"
-        },
-        {
-          "parent": {
-            "path": "/auth",
-            "fullPath": "/auth",
-            "name": "/auth",
-            "meta": {}
-          },
-          "fullPath": "/auth/user",
-          "path": "user",
-          "name": "/auth/user",
-          "meta": {},
-          "children": [],
-          "component": "F:/CODE/demo/demo/vue-vite-template/src/pages/auth/user.vue"
-        }
-      ]
+      "children": []
     },
     {
       "parent": {
