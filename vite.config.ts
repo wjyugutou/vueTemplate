@@ -7,8 +7,11 @@ import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
+import Compression from 'vite-plugin-compression'
 
-// export default defineConfig(() => {
+/**
+ * mode: 'development' | 'production'
+ */
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, './env') as ImportMetaEnv
 
@@ -80,6 +83,15 @@ export default defineConfig(({ mode }) => {
         dts: './types/components.d.ts',
       }),
 
+      // gzip
+      env.VITE_BUILD_GZIP === 'true' && mode === 'production' && Compression({
+        verbose: true, // 输出压缩日志
+        disable: false, // 是否禁用压缩
+        threshold: 10240, // 对超过10KB的文件进行压缩
+        algorithm: 'gzip', // 使用gzip压缩
+        ext: '.gz', // 压缩后文件的扩展名
+        deleteOriginFile: false,
+      }),
     ],
   }
 })
