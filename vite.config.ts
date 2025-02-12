@@ -1,5 +1,6 @@
 import type { EditableTreeNode } from 'unplugin-vue-router'
 import path from 'node:path'
+import { VantResolver } from '@vant/auto-import-resolver'
 import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -70,6 +71,7 @@ export default defineConfig(({ mode }) => {
           '@vueuse/core',
           VueRouterAutoImports,
         ],
+        resolvers: [VantResolver()],
         dts: './types/auto-imports.d.ts',
         dirs: [
           './src/hooks',
@@ -80,6 +82,7 @@ export default defineConfig(({ mode }) => {
 
       // https://github.com/antfu/vite-plugin-components
       Components({
+        resolvers: [VantResolver()],
         dts: './types/components.d.ts',
       }),
 
