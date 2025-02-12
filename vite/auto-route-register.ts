@@ -43,7 +43,7 @@ function getRouteInfo(route: EditableTreeNode) {
 }
 
 //
-async function writeRouteInfo(routeInfo?: RouteInfo) {
+async function writeRouteInfo(routeInfo: RouteInfo) {
   try {
     const __dirname = import.meta.dirname
     const filePath = path.join(__dirname, 'routes.json')
@@ -51,8 +51,8 @@ async function writeRouteInfo(routeInfo?: RouteInfo) {
     // 判断文件是否存在，不存在则创建
     await fs.access(filePath).catch(() => fs.appendFile(filePath, '{}', 'utf-8'))
 
-    if (!routeInfo)
-      return
+    // 一般在这里发请求，将路由信息注册到后台
+    // ....
 
     await fs.writeFile(filePath, JSON.stringify(routeInfo, null, 2), 'utf-8')
   }
