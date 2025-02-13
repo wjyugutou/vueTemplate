@@ -1,8 +1,8 @@
 {
   "recommendations": [
     "antfu.iconify",
-    "antfu.unocss",
     "antfu.goto-alias",
+    "tailwindlabs.tailwindcss-intellisense",
     "vue.volar",
     "dbaeumer.vscode-eslint"
   ]
