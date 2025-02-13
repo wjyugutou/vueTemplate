@@ -9,8 +9,11 @@ declare module 'vue' {
   export interface GlobalComponents {
     Counter: typeof import('./../src/components/Counter.vue')['default']
     Footer: typeof import('./../src/components/Footer.vue')['default']
+    PullRefreshList: typeof import('./../src/components/PullRefreshList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    VanList: typeof import('vant/es')['List']
     VanNavBar: typeof import('vant/es')['NavBar']
+    VanPullRefresh: typeof import('vant/es')['PullRefresh']
   }
 }
