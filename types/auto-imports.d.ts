@@ -36,6 +36,7 @@ declare global {
   const eagerComputed: typeof import('@vueuse/core')['eagerComputed']
   const effectScope: typeof import('vue')['effectScope']
   const extendRef: typeof import('@vueuse/core')['extendRef']
+  const generatTreeNode: typeof import('../src/utils/index')['generatTreeNode']
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
@@ -81,6 +82,7 @@ declare global {
   const pausableWatch: typeof import('@vueuse/core')['pausableWatch']
   const provide: typeof import('vue')['provide']
   const provideLocal: typeof import('@vueuse/core')['provideLocal']
+  const queryString: typeof import('../src/utils/index')['queryString']
   const reactify: typeof import('@vueuse/core')['reactify']
   const reactifyObject: typeof import('@vueuse/core')['reactifyObject']
   const reactive: typeof import('vue')['reactive']
@@ -292,6 +294,14 @@ declare global {
   const useWindowFocus: typeof import('@vueuse/core')['useWindowFocus']
   const useWindowScroll: typeof import('@vueuse/core')['useWindowScroll']
   const useWindowSize: typeof import('@vueuse/core')['useWindowSize']
+  const vaildateIdCard: typeof import('../src/utils/validate')['vaildateIdCard']
+  const vaildatePc: typeof import('../src/utils/validate')['vaildatePc']
+  const validateBankCard: typeof import('../src/utils/validate')['validateBankCard']
+  const validateCreditCode: typeof import('../src/utils/validate')['validateCreditCode']
+  const validateEmail: typeof import('../src/utils/validate')['validateEmail']
+  const validatePhone: typeof import('../src/utils/validate')['validatePhone']
+  const validateTelephone: typeof import('../src/utils/validate')['validateTelephone']
+  const validatenull: typeof import('../src/utils/validate')['validatenull']
   const watch: typeof import('vue')['watch']
   const watchArray: typeof import('@vueuse/core')['watchArray']
   const watchAtMost: typeof import('@vueuse/core')['watchAtMost']
@@ -317,6 +327,9 @@ declare global {
   // @ts-ignore
   export type { DictItem, DictReturn } from '../src/hooks/useDict'
   import('../src/hooks/useDict')
+  // @ts-ignore
+  export type { TreeNodeConfig, TreeNode } from '../src/utils/index'
+  import('../src/utils/index')
   // @ts-ignore
   export type { AlovaCustomTypes } from '../src/utils/request'
   import('../src/utils/request')
