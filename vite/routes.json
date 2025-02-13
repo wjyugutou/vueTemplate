@@ -40,19 +40,6 @@
         "name": "",
         "meta": {}
       },
-      "fullPath": "/auth",
-      "path": "/auth",
-      "name": "/auth",
-      "meta": {},
-      "children": []
-    },
-    {
-      "parent": {
-        "path": "",
-        "fullPath": "/",
-        "name": "",
-        "meta": {}
-      },
       "fullPath": "/hi",
       "path": "/hi",
       "name": "/hi",

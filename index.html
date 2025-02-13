@@ -12,10 +12,14 @@
   <script>
     // 初始化颜色模式
     (function() {
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      const setting = localStorage.getItem('%VITE_COLOR_SCHEMA_STORAGE_KEY%') || 'auto'
-      if (setting === 'dark' || (prefersDark && setting !== 'light'))
-        document.documentElement.classList.toggle('dark', true)
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        const colorSchema = '%VITE_COLOR_SCHEMA%' === 'auto' ?  localStorage.getItem('%VITE_COLOR_SCHEMA_STORAGE_KEY%') : '%VITE_COLOR_SCHEMA%'
+        
+        if(colorSchema !== 'auto') {
+          document.documentElement.classList.toggle(colorSchema, true)
+        } else {
+          document.documentElement.classList.toggle(prefersDark ? 'dark' : 'light', true)
+        }
     })()
   </script>
   <script type="module" src="/src/main.ts"></script>
