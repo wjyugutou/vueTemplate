@@ -9,6 +9,8 @@ interface ImportMetaEnv {
   readonly VITE_COLOR_SCHEMA_STORAGE_KEY: string
   /** 是否开启gzip */
   readonly VITE_BUILD_GZIP: 'true' | 'false'
+  // app 颜色模式的初始值 auto 跟随系统
+  readonly VITE_COLOR_SCHEMA: 'auto' | 'light' | 'dark'
 }
 
 interface ImportMeta {

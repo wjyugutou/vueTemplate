@@ -20,10 +20,10 @@ function changeUsename() {
 </script>
 
 <template>
-  <div>
+  <div class="text-center">
     <div class="i-carbon-campsite inline-block cursor-pointer text-4xl" @click="changeUsename" />
     <p> Vitesse Lite </p>
-    <p>
+    <p class="">
       <em class="text-sm op75">Opinionated Vite Starter Template</em>
     </p>
 
